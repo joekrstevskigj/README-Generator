@@ -9,67 +9,76 @@ const questions = [
         type: 'input',
         name: 'title',
         message: 'Title of the project : ',
-        default : 'Title_' + Math.random() * 100
+        default: 'Title_' + Math.round(Math.random() * 100)
     },
     {
         type: 'input',
-        name: 'description',
+        name: 'project_desc',
         message: 'Description of the project : ',
-        default : 'No description provided.'
+        default: 'No description provided.'
     },
     {
         type: 'input',
-        name: 'installation',
+        name: 'installation_descr',
         message: 'Installation instructions : ',
-        default : 'No installation instruction needed'
+        default: 'No installation instruction needed'
     },
 
     {
         type: 'input',
-        name: 'usage',
+        name: 'usage_descr',
         message: 'Describe how to use the application :',
-        default : 'No use case scenario.'
-    },
-    {
-        type: 'input',
-        name: 'usage',
-        message: 'Please enter details on how to correctly use your application...',
+        default: 'No use case scenario.'
     },
     {
         type: 'list',
         name: 'license',
-        message: 'Please choose the License you used for this project...',
-        choices: ['MIT', 'GPLv2', 'Apache', 'Other']
+        message: 'Choose type of License :',
+        choices: ['MIT', 'GPLv2', 'Apache', 'Other'],
+        default: 0
     },
     {
         type: 'input',
-        name: 'contribution',
-        message: 'Please enter details of anyone who contributed to this application...',
+        name: 'contrib',
+        message: 'Explain how to contribute to this project :',
+        default: 'No contributing instructions'
     },
     {
         type: 'input',
         name: 'tests',
-        message: 'Please state here any tests that took place...'
+        message: 'Describe tests used for this application :',
+        default: 'No tests are included'
     },
     {
         type: 'input',
-        name: 'github',
-        message: 'Please link your github here...'
+        name: 'user_git',
+        message: 'Enter author github user : ',
+        default: ''
     },
     {
         type: 'input',
         name: 'email',
-        message: 'And finally, what is your email address...'
+        message: 'Enter e-mail for answering any questions about the project : ',
+        default: ''
     }
 ];
 
 // function to write README file
 function writeToFile(fileName, data) {
+    fs.writeFileSync(fileName, data);
+    console.log(`${fileName} generated!`);
 }
 
 // function to initialize program
 function init() {
-
+    console.log("Let's generate README file for your project. Please answer few simple questions: ");
+    inquirer.prompt(questions)
+        .then((answers) => {
+            const readmeContent = generateMarkdown(answers);
+            console.log(answers);
+            //writeToFile("README.md", readmeContent);
+        })
+        .catch((error) => console.error("Error:", error));
 }
 
 // function call to initialize program
