@@ -1,8 +1,7 @@
-const { encode } = require("punycode");
-
 // function to generate markdown for README
 function generateMarkdown(data) {
   
+  //getting the icon for the license
   const linceseIcon = `![License: ${data.license}](https://img.shields.io/badge/License-${data.license}-brightgreen.svg)`;
 
   return `# ${linceseIcon} ${data.title} 
