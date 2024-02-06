@@ -9,22 +9,26 @@ const questions = [
         type: 'input',
         name: 'title',
         message: 'Title of the project : ',
+        default : 'Title_' + Math.random() * 100
     },
     {
         type: 'input',
         name: 'description',
         message: 'Description of the project : ',
+        default : 'No description provided.'
     },
     {
         type: 'input',
         name: 'installation',
         message: 'Installation instructions : ',
+        default : 'No installation instruction needed'
     },
 
     {
         type: 'input',
         name: 'usage',
-        message: 'Please enter details on how to correctly use your application...',
+        message: 'Describe how to use the application :',
+        default : 'No use case scenario.'
     },
     {
         type: 'input',
