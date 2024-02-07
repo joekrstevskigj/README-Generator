@@ -17,3 +17,6 @@ A preview of the console application
 A preview of the generated README.md file.
 
 ![Screenshot 2](./assets/Screenshot_2.png)
+
+### Video ###
+[Video Link](https://watch.screencastify.com/v/EQGZS5iIm6VRkBrEs0vH)
